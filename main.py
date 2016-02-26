@@ -42,14 +42,14 @@ parametros = []
 if len(url)>0:
     if "?" in url:
         recurso = url.split("?")[0]
-                
+
         for par in url.split("?")[1].split("&"):
             if "=" in par:
                 parametros.insert(len(parametros), par.split("="))
             else:
                 print("Parametros incorrectos")
                 exit()
-        
+
     else:
         recurso = url
 
@@ -59,14 +59,14 @@ print("Parámetros: "+str(parametros))
 while True:
     try:
         print("\nIntroduzca el método(1:GET 2:POST 3:OPTIONS): ",end="")
-        i = int(input())
+        i = int(input())-1
         break
     except:
         pass
 
 metodo = ("GET","POST","OPTIONS")[i]
 
-request = metodo+" "+recurso+" HTTP/1.1\n\nhost: "+host+":"+str(port)+"\n"
+request = metodo+" "+recurso+" HTTP/1.1\nHost: "+host+":"+str(port)+"\n\n"
 
 print("----------Petición")
 print(request)
@@ -79,6 +79,12 @@ s.connect((host, port))
 
 s.send(bytes(request,"UTF-8"))
 
+s.settimeout(0.1)
 print("----------Respuesta")
 
-print(str(decode(s.recv(100000),"utf-8")))
+#respuesta = str(decode(s.recv(1000000),"latin-1"))
+lineas = ""
+while True:
+    c = str(decode(s.recv(1),"latin-1"))
+    print(c,end="")
+    
