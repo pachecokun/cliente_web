@@ -1,0 +1,21 @@
+-----------------------------------------------
+----------------Cliente web--------------------
+-----------------------------------------------
+
+Alumno: Pacheco Soto David Alberto
+Grupo: 2CM5
+
+Descripción: 
+Este programa recibe una URL y envía una petición
+GET, POST u OPTIONS con capacidad de enviar parámetros
+
+Instalación:
+Se requiere Python 3.x para la ejecución del programa.
+
+Comando de ejecución:
+
+python main.py
+
+Nota: se debe haber agragado previamente la carpeta de
+ejecutables de python (C:\Python3x por defecto) a las 
+variables de entorno.
